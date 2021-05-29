@@ -1,0 +1,375 @@
+<div class="header bg-gradient-gray-dark pb-5 pt-5 pt-md-8">
+  <div class="container-fluid" >
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0" style="background-color : #19214D;">
+            <div class="card-body" >
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase  mb-0" style="color : white; ">Traffic</h5>
+                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef; ">350,897</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span class="text-nowrap">Since last month</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0" style="background-color : #19214D;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase  mb-0" style="color : white; ">New users</h5>
+                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef;">2,356</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-chart-pie"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+                <span class="text-nowrap">Since last week</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6" >
+          <div class="card card-stats mb-4 mb-xl-0" style="background-color : #19214D;" >
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase  mb-0" style="color : white; ">Sales</h5>
+                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef;">924</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-users"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                <span class="text-nowrap">Since yesterday</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0" style="background-color : #19214D;">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase mb-0" style="color : white;">Performance</h5>
+                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef;" >49,65%</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <i class="fas fa-percent"></i>
+                  </div>
+                </div>
+              </div>
+              <p class="mt-3 mb-0 text-muted text-sm">
+                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                <span class="text-nowrap">Since last month</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--4">
+  <div class="row">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card bg-gradient-default shadow">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+              <h2 class="text-white mb-0">Sales value</h2>
+            </div>
+            <div class="col">
+              <ul class="nav nav-pills justify-content-end">
+                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[0];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked===true}" data-toggle="tab" (click)="clicked=true;clicked1=false">
+                    <span class="d-none d-md-block">Month</span>
+                    <span class="d-md-none">M</span>
+                  </a>
+                </li>
+                <li class="nav-item" data-toggle="chart" data-target="#chart-sales"  (click)="data=datasets[1];updateOptions()">
+                  <a href="javascript:void(0)" class="nav-link py-2 px-3" [ngClass]="{'active':clicked1===true}" data-toggle="tab" (click)="clicked=false;clicked1=true">
+                    <span class="d-none d-md-block">Week</span>
+                    <span class="d-md-none">W</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class=" chart-area">
+          <div class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand"> 
+              <div class="">
+                </div>
+              </div>
+            <div class="chartjs-size-monitor-shrink">
+              <div class="">
+              </div>
+            </div>
+          </div>
+          <canvas id="chart-sales" width="748" height="275" style="" class="chart-canvas">
+         
+          </canvas>
+        </div>
+      
+  </div>
+  <div class="row mt-5 ">
+    <!--DEBUT Petit Graphique 1 -->
+          <div class="col-xl-4 mb-5 mb-xl-0">
+            <div class="card bg-gradient-default shadow">
+              <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h6 class="text-uppercase text-light ls-1 mb-1">Performance</h6>
+                    <h2 class="text-white mb-0">Total orders</h2>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- Chart -->
+                  <div class="chart">
+                    <canvas id="chart-orders" width="778" height="275" style="display: block; height: 220px; width: 623px;"  class="chart-canvas"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!--FIN Petit Graphique 1 -->
+    <!--DEBUT Petit Graphique 2 -->
+      <div class="col-xl-4 mb-5 mb-xl-0">
+            <div class="card bg-gradient-default shadow">
+              <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h6 class="text-uppercase text-light ls-1 mb-1">Performance</h6>
+                    <h2 class="text-white mb-0">Total orders</h2>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- Chart -->
+                  <div class="chart">
+                    <canvas id="chart-safes" width="778" height="275" style="display: block; height: 220px; width: 623px;"  class="chart-canvas"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!--FIN Petit Graphique 2 -->
+    <!--DEBUT Petit Graphique 3 -->
+          <div class="col-xl-4 mb-5 mb-xl-0">
+            <div class="card bg-gradient-default shadow">
+              <div class="card-header bg-transparent">
+                <div class="row align-items-center">
+                  <div class="col">
+                    <h6 class="text-uppercase text-light ls-1 mb-1">Résumer</h6>
+                    <h2 class="text-white mb-0"> /argon/index.html </h2>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body" style="display: block; overflow-y: scroll; scroll-behavior: smooth;">
+                <div class="chart" >
+                  « Texte » est issu du mot latin « textum », dérivé du verbe « texere » qui signifie « tisser ». Le mot s'applique à l'entrelacement des fibres utilisées dans le tissage, voir par exemple Ovide : « Quo super iniecit textum rude sedula Baucis = (un siège) sur lequel Baucis empressée avait jeté un tissu grossier »2 ou au tressage (exemple chez Martial « Vimineum textum = panier d'osier tressé »). Le verbe a aussi le sens large de construire comme dans « basilicam texere = construire une basilique » chez Cicéron3.
+
+                  Le sens figuré d'éléments de langage organisés et enchaînés apparaît avant l'Empire romain : il désigne un agencement particulier du discours. Exemple : « epistolas texere = composer des épîtres » - Cicéron (ier siècle av. J.-C.)4 ou plus nettement chez Quintilien (ier siècle apr. J.-C.) : « verba in textu jungantur = l'agencement des mots dans la phrase »5.
+
+                  Les formes anciennes du Moyen Âge désignent au xiie siècle le volume qui contient le texte sacré des Évangiles, puis au xiiie siècle, le texte original d'un livre saint ou des propos de quelqu'un. Au xviie siècle le mot s’applique au passage d'un ouvrage pris comme référence et au début du xixe siècle le mot texte a son sens général d'« écrit »6.  
+                </div>
+              </div>
+            </div>
+          </div>
+    <!--FIN Petit Graphique 3 -->
+  </div>
+  <!--Fin row-->
+  <div class="row mt-5">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Articles</h3>
+            </div>
+            <div class="col text-right">
+              <a href="#!" class="btn btn-sm btn-primary">See all</a>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Titre Article</th>
+                <th scope="col">Date</th>
+                <th scope="col">Visiteur</th>
+                <th scope="col">Sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  /argon/
+                </th>
+                <td>
+                  26/05/2021 17:45
+                </td>
+                <td>
+                  340
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">75%</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  /argon/index.html
+                </th>
+                <td>
+                   25/05/2021 10:45
+                </td>
+                <td>
+                  319
+                </td>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2"> 46%</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  /argon/charts.html
+                </th>
+                <td>
+                   21/05/2021 08:46
+                </td>
+                <td>
+                  294
+                </td>
+               <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">36%</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="36" aria-valuemin="0" aria-valuemax="100" style="width: 36%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  /argon/tables.html
+                </th>
+                <td>
+                   16/05/2021 12:05
+                </td>
+                <td>
+                  147
+                </td>
+                 <td>
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">50%</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  /argon/profile.html
+                </th>
+                <td>
+                   20/05/2021 14:11
+                </td>
+                <td>
+                  190
+                </td>
+                 <td>
+                 <div class="table-responsive">
+          <!-- Projects table -->
+                    <table class="table align-items-center table-flush">
+                  <div class="d-flex align-items-center">
+                    <span class="mr-2">86%</span>
+                    <div>
+                      <div class="progress">
+                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                </table>
+                </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <div class="card-footer py-4">
+          <nav aria-label="...">
+            <ul class="pagination justify-content-end mb-0">
+              <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                  <i class="fas fa-angle-left"></i>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="javascript:void(0)">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="javascript:void(0)">
+                  <i class="fas fa-angle-right"></i>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    </div>
+  </div>
+</div>
