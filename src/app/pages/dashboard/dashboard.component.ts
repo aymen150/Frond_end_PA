@@ -17,11 +17,20 @@ import {
 })
 export class DashboardComponent implements OnInit {
 
+  public nbArticlePrecMois  : number = 15;
+  public nbArticleMois  : number = 10;
+  public augArticleMois  =(Math.abs( ((this.nbArticleMois * 100 )/this.nbArticlePrecMois)-100)).toFixed(2) ;
+
+
   public datasets: any;
   public data: any;
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+
+
+
+
 
   ngOnInit() {
 

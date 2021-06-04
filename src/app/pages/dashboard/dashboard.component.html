@@ -8,8 +8,8 @@
             <div class="card-body" >
               <div class="row">
                 <div class="col">
-                  <h5 class="card-title text-uppercase  mb-0" style="color : white; ">Traffic</h5>
-                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef; ">350,897</span>
+                  <h5 class="card-title text-uppercase  mb-0" style="color : white; ">Article</h5>
+                  <span class="h2 font-weight-bold mb-0" style="color :#e9ecef; ">{{ nbArticleMois }}</span>
                 </div>
                 <div class="col-auto">
                   <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -18,7 +18,11 @@
                 </div>
               </div>
               <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                <span [ngClass]="(nbArticleMoisPrec < nbArticleMois ) ? 'text-success mr-2':'text-danger mr-2'">
+                  <i [ngClass]="(nbArticleMoisPrec < nbArticleMois ) ? 'fa fa-arrow-up':'fas fa-arrow-down'">
+                  </i> 
+                  {{augArticleMois}}%
+                </span>
                 <span class="text-nowrap">Since last month</span>
               </p>
             </div>
