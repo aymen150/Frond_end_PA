@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 import Chart from 'chart.js';
 
 // core components
@@ -8,7 +8,7 @@ import {
   chartExample1 ,
   chartExample2 ,
   chartExample3
-} from "../../variables/charts";
+} from '../../variables/charts';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,16 +17,18 @@ import {
 })
 export class DashboardComponent implements OnInit {
 
-  public nbArticlePrecMois  : number = 15;
-  public nbArticleMois  : number = 10;
-  public augArticleMois  =(Math.abs( ((this.nbArticleMois * 100 )/this.nbArticlePrecMois)-100)).toFixed(2) ;
+  // @ts-ignore
+  public dashboardCompany = this.Company ;
+  public nbArticleMoisPrec = 5;
+  public nbArticleMois = 10;
+  public augArticleMois  = ( Math.abs( ((this.nbArticleMois * 100 ) / this.nbArticleMois) - 100)).toFixed(2) ;
 
 
   public datasets: any;
   public data: any;
   public salesChart;
-  public clicked: boolean = true;
-  public clicked1: boolean = false;
+  public clicked:boolean = true;
+  public clicked1:boolean = false;
 
 
 
@@ -67,10 +69,10 @@ export class DashboardComponent implements OnInit {
 			options: chartExample3.options,
 			data: chartExample3.data
 		});
-  
+
   }
 
-  
+
 
 
   public updateOptions() {

@@ -15,21 +15,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    ClipboardModule
-  ],
-  declarations: [
-    DashboardComponent,
-    UserProfileComponent,
-    TablesComponent,
-    IconsComponent,
-    MapsComponent
-  ]
+    imports: [
+        CommonModule,
+        RouterModule.forChild(AdminLayoutRoutes),
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        ClipboardModule
+    ],
+    exports: [
+        DashboardComponent
+    ],
+    declarations: [
+        DashboardComponent,
+        UserProfileComponent,
+        TablesComponent,
+        IconsComponent,
+        MapsComponent
+    ]
 })
 
 export class AdminLayoutModule {}

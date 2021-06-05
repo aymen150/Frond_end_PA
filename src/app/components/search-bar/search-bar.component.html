@@ -1,0 +1,18 @@
+<h1 style="color: white">{{Company}}</h1>
+<form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+  <div class="form-group mb-0" >
+
+    <input class="input-group input-group-alternative input-group-text" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+             (ngModelChange) = "chargement(searchText)" placeholder="&#61442;  {{Company}}" >
+
+  </div>
+</form>
+<table>
+  <tbody class="position-absolute">
+  <div  *ngFor="let entreprise of entreprises | slice:0:5| filter:searchText ">
+    <input class="input-group input-group-alternative input-group-prepend input-group-text"
+           type="button" (click)="choice(entreprise)" name={{entreprise.Company}} value="{{entreprise.Company}} : {{entreprise.Symbol}}">
+  </div>
+  </tbody>
+</table>
+
