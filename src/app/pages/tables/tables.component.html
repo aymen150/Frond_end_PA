@@ -1,7 +1,7 @@
 <div class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="container-fluid">
     <div class="header-body">
-      
+
     </div>
   </div>
 </div>
@@ -26,15 +26,13 @@
                 <th scope="col"></th>
               </tr>
             </thead>
-            <tbody>
+            <tbody *ngFor="let entreprise of listeStatEntreprise | paginate : {itemsPerPage: 5 , currentPage: page ,
+            totalItems: totalRecords} ">
               <tr>
-                <th scope="row">
+                <th scope="row" (click)="choiceDashboard(entreprise)">
                   <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="...">
-                    </a>
                     <div class="media-body">
-                      <span class="mb-0 text-sm">Apple</span>
+                      <span class="mb-0 text-sm">{{entreprise.name}}</span>
                     </div>
                   </div>
                 </th>
@@ -42,213 +40,24 @@
                   $2,500 USD
                 </td>
                 <td>
-                  12 354
+                  {{entreprise.n_articles}}
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i> pending
+                 <!--    <i class="bg-warning"></i> pending -->
                   </span>
                 </td>
-                
+
                 <td>
                   <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
+                    <span class="mr-2">{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}</span>
                     <div>
                       <div class="progress">
-                        <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                        <div *ngIf="CategorieEntrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)==1" class="progress-bar bg-success" role="progressbar" aria-valuenow="{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}" aria-valuemin="0" aria-valuemax="100" style=" width:{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}%;"></div>
+                        <div *ngIf="CategorieEntrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)==2" class="progress-bar bg-info" role="progressbar" aria-valuenow="{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}" aria-valuemin="0" aria-valuemax="100" style=" width:{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}%;"></div>
+                        <div *ngIf="CategorieEntrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)==3" class="progress-bar bg-danger" role="progressbar" aria-valuenow="{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}" aria-valuemin="0" aria-valuemax="100"  style=" width:{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}%;"></div>
+                        <div *ngIf="CategorieEntrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)==4" class="progress-bar bg-warning" role="progressbar" aria-valuenow="{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}" aria-valuemin="0" aria-valuemax="100" style=" width:{{entrepriseSentiment(entreprise.n_negatives,entreprise.n_positives)}}%;"></div>
                       </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="...">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Angular Now UI Kit PRO</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  $1,800 USD
-                </td>
-                 <td>
-                  1 232
-                </td>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-success"></i> completed
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">100%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown  placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="...">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Facebook</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  $3,150 USD
-                </td>
-                <td>
-                  543
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-danger"></i> delayed
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">72%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown  placement="top-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="...">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">BP</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  $4,400 USD
-                </td>
-                 <td>
-                  8 956
-                </td>
-                <td>
-                  <span class="badge badge-dot">
-                    <i class="bg-info"></i> on schedule
-                  </span>
-                </td>
-               <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">90%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown   placement="top-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  <div class="media align-items-center">
-                    <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
-                      <img alt="Image placeholder" src="...">
-                    </a>
-                    <div class="media-body">
-                      <span class="mb-0 text-sm">Amazon</span>
-                    </div>
-                  </div>
-                </th>
-                <td>
-                  $24,200 USD
-                </td>
-                <td>
-                   1 458
-                </td>
-                <td>
-                  <span class="badge badge-dot mr-4">
-                    <i class="bg-success"></i> completed
-                  </span>
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">100%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown   placement="top-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                     </div>
                   </div>
                 </td>
@@ -258,29 +67,35 @@
         </div>
         <!-- Pagination -->
         <div class="card-footer py-4">
-          <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <pagination-controls class="" (pageChange)="page = $event"></pagination-controls>
+          <!--
+           <div class="card-footer pb-0 pt-3">
+             <jw-pagination [items]="listeEntreprise" (changePage)="onChangePage($event)"></jw-pagination>
+           </div>
+           <nav aria-label="...">
+             <ul class="pagination justify-content-end mb-0">
+               <li class="page-item disabled">
+                 <a class="page-link" href="javascript:void(0)" tabindex="-1">
+                   <i class="fas fa-angle-left"></i>
+                   <span class="sr-only">Previous</span>
+                 </a>
+               </li>
+               <li class="page-item active">
+                 <a class="page-link" href="javascript:void(0)">1</a>
+               </li>
+               <li class="page-item">
+                 <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
+               </li>
+               <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+               <li class="page-item">
+                 <a class="page-link" href="javascript:void(0)">
+                   <i class="fas fa-angle-right"></i>
+                   <span class="sr-only">Next</span>
+                 </a>
+               </li>
+             </ul>
+           </nav>
+           -->
         </div>
       </div>
     </div>
@@ -334,18 +149,6 @@
                       <div class="progress">
                         <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
                       </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-right">
-                  <div ngbDropdown placement="bottom-right">
-                    <a class="btn btn-sm btn-icon-only text-light"  ngbDropdownToggle>
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a>
-                    <div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="javascript:void(0)">Action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Another action</a>
-                      <a class="dropdown-item" href="javascript:void(0)">Something else here</a>
                     </div>
                   </div>
                 </td>
@@ -442,10 +245,10 @@
               </tr>
               <tr>
                 <th scope="row">
-                  <div class="media align-items-center"> 
+                  <div class="media align-items-center">
                     <a href="javascript:void(0)" class="avatar rounded-circle mr-3">
                      <!-- <img alt="Image placeholder" src=""> -->
-                    </a>  
+                    </a>
                     <div class="media-body">
                       <span class="mb-0 text-sm">Doge Coin</span>
                     </div>

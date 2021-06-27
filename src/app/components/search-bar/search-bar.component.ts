@@ -1,10 +1,17 @@
 import { HostListener, Component, OnInit , ViewChild, AfterViewInit} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
+// import {Entreprise} from '../../model/entreprise.model';
+import { Observable } from 'rxjs';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UserService} from '../../services/user.service';
+import {ArticleService} from '../../services/article.service';
+import {Article} from '../../model/article.model';
+import {Entreprise} from '../../model/entreprise.model';
 
-interface Entreprise {
-  Company: string;
-  Symbol: string;
+export interface Company {
+    result: [Entreprise];
 }
+
 
 @Component({
   selector: 'app-search-bar',
@@ -15,29 +22,37 @@ interface Entreprise {
 export class SearchBarComponent implements OnInit {
 
   title = 'Angular Search Using ng2-search-filter';
+  id: string ;
   searchText: string;
   entreprises: Entreprise[];
   Company: string;
   Symbol: string;
-  num = 1 ;
-  constructor(private http: HttpClient) {}
+  listeArticle: [Article];
+  size;
+  //
+  constructor(private http: HttpClient, private articleService: ArticleService) {}
   ngOnInit(): void {}
+  //
   chargement(x): void {
-    if (x.lenght < 1 ) {
-      this.entreprises = [];
-    } else {
-      this.http.get<Entreprise[]>('./assets/data/Nasdaq.json')
-        .subscribe((data: Entreprise[]) => {
-          this.entreprises = data;
+      let params = new HttpParams();
+      params = params.append('name', x);
+      this.http.get<Company>('http://localhost:5000/company/get-companies-by-name', { params: params})
+        .subscribe(value => {
+          this.entreprises = value.result;
+          console.log('value ! : ' + value);
         });
+
+  }
+
+    choice ( x: Entreprise) {
+    this.id =  x.company_id  ;
+    this.Company = x.name;
+    this.Symbol = x.symbol;
+    localStorage.setItem('entreprise', JSON.stringify(x));
+    this.entreprises = [] ;
+    this.searchText = '' ;
     }
-  }
-
-  choice(x: Entreprise): void {
-    this.Company = x.Company ;
-    this.Symbol = x.Symbol;
-    this.entreprises = [];
-  }
-
+  //
+  //
 }
 

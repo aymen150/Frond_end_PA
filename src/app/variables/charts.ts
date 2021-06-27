@@ -243,11 +243,11 @@ export function chartOptions() {
       zeroLineBorderDashOffset: [2]
     },
     ticks: {
-      beginAtZero: true,
+      beginAtZero: false,
       padding: 10,
       callback: function(value) {
         if (!(value % 10)) {
-          return value
+          return value ;
         }
       }
     }
@@ -280,7 +280,7 @@ export const parseOptions = (parent, options) => {
 		}
 	}
 
-export const chartExample1 = {
+export const chartExample1= {
   options: {
     scales: {
       yAxes: [{
@@ -290,20 +290,13 @@ export const chartExample1 = {
         },
         ticks: {
           callback: function(value) {
-            if (!(value % 10)) {
-              return '$' + value + 'k';
+            if (!(value % 2)) {
+              return '$' + value ;
             }
           }
         }
       }]
     }
-  },
-  data: {
-    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    datasets: [{
-      label: 'Performance',
-      data: [0, 20, 10, 30, 15, 40, 20, 60, 60]
-    }]
   }
 }
 
@@ -348,7 +341,7 @@ export const chartExample2 = {
       }
     ]
   }
-  
+
 }
 
 export const chartExample3 = {
@@ -358,7 +351,7 @@ export const chartExample3 = {
         {
           ticks: {
             callback: function(value) {
-              if (!(value % 10)) {
+              if (true) {
                 //return '$' + value + 'k'
                 return value;
               }
@@ -382,16 +375,7 @@ export const chartExample3 = {
       }
     }
   }
-  ,
-  data: {
-    labels: ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    datasets: [
-      {
-        label: "Sales",
-        data: [21, 20, 0, 25, 0, 10, 22, 17, 19,22, 17, 9]
-      }
-    ]
-  }
-  
+
+
 }
 
